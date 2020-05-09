@@ -49,16 +49,7 @@ namespace ConnectingApps.Project.IntegrationTests
         {
             var serviceDescriptor = serviceCollection.FirstOrDefault(descriptor => descriptor.ServiceType == typeof(ProjectContext));
             serviceCollection.Remove(serviceDescriptor);
-            serviceCollection.AddDbContext<ProjectContext, TestProjectContext>(options =>
-            {
-                Console.WriteLine("AddDbContext just started");
-                options.UseSqlite(newConnectionString,
-                    sqlOptions =>
-                    {
-                        sqlOptions.MigrationsAssembly(typeof(Startup).GetTypeInfo().Assembly.GetName().Name);
-                    });
-                Console.WriteLine("AddDbContext just finished");
-            });
+            serviceCollection.AddDbContext<ProjectContext, TestProjectContext>();
         }
 
         protected abstract void SetTestInstance(TTestType testInstance);

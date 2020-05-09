@@ -13,7 +13,8 @@ namespace ConnectingApps.Project.IntegrationTests
     {
         private ITodoRepository _todoRepository;
 
-        private List<(object Entity, EntityState EntityState)> _entityChanges = new List<(object Entity, EntityState entityState)>();
+        private readonly List<(object Entity, EntityState EntityState)> _entityChanges = 
+            new List<(object Entity, EntityState entityState)>();
 
         public TodoRepositoryTest(WebApplicationFactory<Startup> webApplicationFactory) : base(webApplicationFactory, 
             5347, @"Data Source=../../../../project3.db")
@@ -23,8 +24,6 @@ namespace ConnectingApps.Project.IntegrationTests
         [Fact]
         public async Task SaveItemTest()
         {
-            // run this commandline statement from sln folder first
-            // dotnet ef database update --project ConnectingApps.Project
             var todoItem = new TodoItem()
             {
                 Todo = "TestItem"
