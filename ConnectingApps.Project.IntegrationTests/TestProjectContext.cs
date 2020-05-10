@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Dynamic;
 using System.Linq;
 using System.Threading;
@@ -23,13 +24,16 @@ namespace ConnectingApps.Project.IntegrationTests
 
         public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = new CancellationToken())
         {
+            Action entityChanges = () => { };
             var ca = this.Database.GetDbConnection().ConnectionString;
             var entries = ChangeTracker.Entries();
             foreach (var entry in entries)
             {
-                _testContext.AddEntityChange(entry.Entity, entry.State);
+                var state = entry.State;
+                entityChanges += () => _testContext.AddEntityChange(entry.Entity, state);
             }
             var result = await base.SaveChangesAsync(cancellationToken);
+            entityChanges();
             return result;
         }
 
