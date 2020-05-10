@@ -1,5 +1,5 @@
 # DncDatabaseTest
-A demonstration of integration tests with a database dependency
+A demonstration of integration tests with a database dependency. A detailed explanation can be found [on codeproject](https://www.codeproject.com/script/Reputation/List.aspx?mid=9921176).
 
 If have not done it yet, [install the .NET Core 3.1 SDK](https://dotnet.microsoft.com/download/dotnet-core/3.1) 
 
