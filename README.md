@@ -12,10 +12,11 @@ dotnet tool install --global dotnet-ef
 To run the tests here is how:
 
 ````bash
-git clone https://github.com/ConnectingApps/DncInstallScripts
-dotnet build
+git clone https://github.com/ConnectingApps/DncDatabaseTest
+cd DncDatabaseTest
 dotnet restore
-dotnet test
+dotnet build
 dotnet ef database update --project ConnectingApps.Project
+dotnet test
 ````
 
