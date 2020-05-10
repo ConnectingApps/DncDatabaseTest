@@ -23,6 +23,8 @@ namespace ConnectingApps.Project.IntegrationTests
         [Fact]
         public async Task SaveItemTest()
         {
+            // Run this command from the sln folder before running this test
+            // dotnet ef database update --project ConnectingApps.Project
             var todoItem = new TodoItem()
             {
                 Todo = "TestItem"

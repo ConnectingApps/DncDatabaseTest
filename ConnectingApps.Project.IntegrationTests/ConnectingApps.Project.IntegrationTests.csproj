@@ -19,8 +19,4 @@
     <ProjectReference Include="..\ConnectingApps.Project\ConnectingApps.Project.csproj" />
   </ItemGroup>
 
-  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-    <Exec Command="cd.. &amp;&amp; dotnet ef database update --project ConnectingApps.Project" />
-  </Target>
-
 </Project>
