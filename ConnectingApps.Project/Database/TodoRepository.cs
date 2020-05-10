@@ -1,5 +1,4 @@
-﻿using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using ConnectingApps.Project.Models;
 
 namespace ConnectingApps.Project.Database
@@ -19,11 +18,9 @@ namespace ConnectingApps.Project.Database
             {
                 Todo = item.Todo
             };
-            var beforeAdded = _projectContext.ChangeTracker.Entries().ToList();
-            _projectContext.TodoItems.Add(newItem);
-            var afterAdded = _projectContext.ChangeTracker.Entries().ToList();
-            await _projectContext.SaveChangesAsync();
 
+            _projectContext.TodoItems.Add(newItem);
+            await _projectContext.SaveChangesAsync();
             return newItem;
         }
     }

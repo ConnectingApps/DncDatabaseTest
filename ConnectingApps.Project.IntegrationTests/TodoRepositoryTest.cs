@@ -25,11 +25,17 @@ namespace ConnectingApps.Project.IntegrationTests
         {
             // Run this command from the sln folder before running this test
             // dotnet ef database update --project ConnectingApps.Project
+
+            // arrange
             var todoItem = new TodoItem()
             {
                 Todo = "TestItem"
             };
+            
+            // act
             var savedEntity = await _todoRepository.SaveItem(todoItem);
+
+            // assert
             Assert.NotNull(savedEntity);
             Assert.NotEqual(0, savedEntity.Id);
             Assert.Equal(todoItem.Todo, savedEntity.Todo);

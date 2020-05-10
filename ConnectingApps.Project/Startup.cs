@@ -24,21 +24,16 @@ namespace ConnectingApps.Project
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-
             services.AddDbContext<ProjectContext>(options =>
             {
                 var connectionString = Configuration["ConnectionString"];
-                Console.WriteLine("AddDbContext just started");
                 options.UseSqlite(connectionString,
                     sqlOptions =>
                     {
                         sqlOptions.MigrationsAssembly(typeof(Startup).GetTypeInfo().Assembly.GetName().Name);
                     });
-                Console.WriteLine("AddDbContext just finished");
             });
-
             services.AddTransient<ITodoRepository, TodoRepository>();
-            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
