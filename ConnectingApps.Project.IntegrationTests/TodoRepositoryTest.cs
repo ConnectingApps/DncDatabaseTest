@@ -16,8 +16,7 @@ namespace ConnectingApps.Project.IntegrationTests
         private readonly List<(object Entity, EntityState EntityState)> _entityChanges = 
             new List<(object Entity, EntityState entityState)>();
 
-        public TodoRepositoryTest(WebApplicationFactory<Startup> webApplicationFactory) : base(webApplicationFactory, 
-            5347, @"Data Source=../../../../project3.db")
+        public TodoRepositoryTest(WebApplicationFactory<Startup> webApplicationFactory) : base(webApplicationFactory, @"Data Source=../../../../project3.db")
         {
         }
 

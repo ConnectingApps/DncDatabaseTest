@@ -16,7 +16,7 @@ namespace ConnectingApps.Project.IntegrationTests
     {
         protected readonly HttpClient HttpClient;
 
-        protected TestBase(WebApplicationFactory<Startup> webApplicationFactory, int portNumber,
+        protected TestBase(WebApplicationFactory<Startup> webApplicationFactory,
             string newConnectionString)
         {
             HttpClient = webApplicationFactory.WithWebHostBuilder(whb =>
@@ -36,10 +36,7 @@ namespace ConnectingApps.Project.IntegrationTests
                     var testInstance = scope.ServiceProvider.GetService<TTestType>();
                     SetTestInstance(testInstance);
                 });
-            }).CreateClient(new WebApplicationFactoryClientOptions
-            {
-                BaseAddress = new Uri($"http://localhost:{portNumber}")
-            });
+            }).CreateClient();
         }
 
         public void Dispose()
