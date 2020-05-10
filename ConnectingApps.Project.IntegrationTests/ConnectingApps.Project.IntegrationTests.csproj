@@ -20,7 +20,7 @@
   </ItemGroup>
 
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-    <Exec Command="cd..&#xD;&#xA;dotnet ef database update --project ConnectingApps.Project&#xD;&#xA;" />
+    <Exec Command="cd.. &amp;&amp; dotnet ef database update --project ConnectingApps.Project" />
   </Target>
 
 </Project>
